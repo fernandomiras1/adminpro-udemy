@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 // Importamos solo el operador map. para no cargar el nav con otros operadores.
 // import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators';
+import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,9 @@ export class UsuarioService {
   url = environment.apiUrl;
   usuario: Usuario;
   token: string;
-  constructor(public http: HttpClient, public router: Router) { this.cargarStorage(); }
+  constructor(public http: HttpClient,
+              public _subirArchivoService: SubirArchivoService,
+              public router: Router) { this.cargarStorage(); }
 
   estaLogueado() {
 
@@ -92,6 +95,31 @@ export class UsuarioService {
 
   }
 
+  actualizarUsuario(usuario: Usuario) {
+    let url = this.url + '/usuario/' + usuario._id;
+    url += '?token=' + this.token;
+    return this.http.put(url, usuario).pipe(
+      map((resp: any) => {
+        // modificamos el LocalStorage.
+      this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+        swal('Usuario actualizado', usuario.nombre , 'success');
+        return true;
+      })
+    );
+  }
+
+  cambiarImagen(archivo: File, id: string) {
+    this._subirArchivoService.subirArchivo(archivo, 'usuarios', id)
+      .then((resp: any) => {
+        this.usuario.img = resp.usuario.img;
+        swal('Imagen Actualizada', this.usuario.nombre , 'success');
+        // Guardamos la nueva imagene en el localStroage, para que se replique en todos las pantallas.
+        this.guardarStorage(id, this.token, this.usuario);
+      })
+      .catch(resp => {
+        console.log(resp);
+      });
+  }
 
 
 }
