@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 // ng2- charts
 import { ChartsModule } from 'ng2-charts';
@@ -23,6 +24,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../components/graficoDona/graficoDona.component';
 import { PromesasComponent } from './promesas/promesas.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { PromesasComponent } from './promesas/promesas.component';
     AccountSettingsComponent,
     PromesasComponent,
     RxjsComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsuariosComponent,
+    ModalUploadComponent
  ],
  exports: [
     DashboardComponent,
