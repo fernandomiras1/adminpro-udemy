@@ -5,9 +5,7 @@ import { PAGES_ROUTES } from './pages.routes';
 // Modulos
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
-import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PipesModule } from '../pipes/pipes.module';
-import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 // ng2- charts
 import { ChartsModule } from 'ng2-charts';
@@ -19,12 +17,17 @@ import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
 
 // temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../components/graficoDona/graficoDona.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { MedicoComponent } from './medicos/medico.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     RxjsComponent,
     ProfileComponent,
     UsuariosComponent,
-    ModalUploadComponent
+    ModalUploadComponent,
+    HospitalesComponent,
+    MedicosComponent,
+    MedicoComponent
  ],
  exports: [
     DashboardComponent,
