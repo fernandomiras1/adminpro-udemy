@@ -41,7 +41,7 @@ export class HospitalesComponent implements OnInit {
 
   }
 
-  crearHospital(hospital: Hospital) {
+  crearHospital() {
 
     swal({
       title: 'Crear Hospital',

@@ -98,6 +98,26 @@ export class UsuarioService {
 
   }
 
+  renuevaToken() {
+    let url = this.url + '/login/renuevatoken';
+    url += '?token=' + this.token;
+
+    return this.http.get(url).pipe(
+      map((resp: any) => {
+        this.token = resp.token;
+        localStorage.setItem('token', this.token);
+        console.log('token renovado');
+        return true;
+      }),
+      catchError(err => {
+       this.logout();
+       swal('Error Token', 'No fue posible renovar token' , 'error');
+       return throwError(err);
+      })
+    );
+  }
+
+
 
   crearUsuario(usuario: Usuario) {
 
